@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, GitBranch } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { HeroIllustration } from "@/components/site/hero-illustration";
 
 export function Hero() {
@@ -28,15 +28,8 @@ export function Hero() {
               href="/about"
               className="inline-flex items-center gap-2 rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
             >
-              開始閱讀
+              點我查看指導手冊
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <Link
-              href="/complaint"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition-all hover:-translate-y-0.5 hover:border-brand-primary hover:text-brand-primary"
-            >
-              查看申訴流程
-              <GitBranch className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
         </motion.div>

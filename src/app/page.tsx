@@ -1,15 +1,5 @@
 import Link from "next/link";
-import {
-  BookOpen,
-  Building2,
-  Calendar,
-  FileQuestion,
-  FileSearch,
-  GitBranch,
-  Layers,
-  Library,
-  ScrollText,
-} from "lucide-react";
+import { BookOpen, Building2, Calendar, FileSearch, GitBranch } from "lucide-react";
 
 import { Hero } from "@/components/site/hero";
 import { SearchBox } from "@/components/site/search-box";
@@ -63,29 +53,6 @@ const scenarioGuide = [
   { emoji: "📌", title: "我想提出申復", href: "/appeal" },
 ];
 
-const siteFeatures = [
-  {
-    icon: Layers,
-    title: "流程圖",
-    description: "以流程圖與時間軸呈現申訴、調查、申復程序，一目了然。",
-  },
-  {
-    icon: ScrollText,
-    title: "重點整理",
-    description: "精選《職場霸凌防治指導手冊》重點，去除冗長法條。",
-  },
-  {
-    icon: FileQuestion,
-    title: "FAQ",
-    description: "彙整員工、主管、HR 最常見的疑問與解答。",
-  },
-  {
-    icon: Library,
-    title: "官方資源",
-    description: "連結勞動部、職安署等官方網站，掌握最新規定。",
-  },
-];
-
 const flowPreview: TimelineStep[] = [
   { step: "STEP 01", title: "提出申訴", description: "員工向雇主或申訴管道提出申訴。" },
   { step: "STEP 02", title: "受理", description: "雇主於期限內決定是否受理案件。" },
@@ -97,8 +64,6 @@ const flowPreview: TimelineStep[] = [
 export default function Home() {
   return (
     <>
-      <Hero />
-
       <Section className="max-w-3xl">
         <SectionHeading eyebrow="關於本站" title="為什麼需要防治職場霸凌" />
         <p className="mt-6 text-base leading-loose text-muted-foreground">
@@ -108,31 +73,62 @@ export default function Home() {
         </p>
       </Section>
 
-      <Section className="py-4 lg:py-6">
-        <SearchBox />
-      </Section>
-
       <Section muted>
         <SectionHeading
-          eyebrow="情境式導覽"
-          title="請選擇目前的情境"
-          description="點擊後直接跳到最相關的頁面與流程圖。"
+          eyebrow="首頁亮點"
+          title="找到最適合你的入口"
+          description="不論你想依「情境」還是「身分」快速找到答案，都能在這裡直接跳轉到最相關的頁面。"
         />
-        <div className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2">
-          {scenarioGuide.map((item, i) => (
-            <Reveal key={item.href} delay={i * 0.06}>
-              <Link
-                href={item.href}
-                className="flex h-full items-center gap-3 rounded-2xl border border-border bg-card p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-primary hover:shadow-lg"
-              >
-                <span className="text-2xl" aria-hidden="true">
-                  {item.emoji}
-                </span>
-                <span className="font-medium text-foreground">{item.title}</span>
-              </Link>
-            </Reveal>
-          ))}
+
+        <div className="mx-auto mt-12 max-w-4xl rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
+          <div>
+            <p className="text-sm font-semibold text-brand-primary">
+              📌 依情境：請選擇目前的情境
+            </p>
+            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {scenarioGuide.map((item, i) => (
+                <Reveal key={item.href} delay={i * 0.06}>
+                  <Link
+                    href={item.href}
+                    className="flex h-full items-center gap-3 rounded-2xl border border-border bg-muted/40 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-brand-primary hover:shadow-lg"
+                  >
+                    <span className="text-2xl" aria-hidden="true">
+                      {item.emoji}
+                    </span>
+                    <span className="font-medium text-foreground">{item.title}</span>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-10 border-t border-border pt-8">
+            <p className="text-sm font-semibold text-brand-primary">
+              依身分：你是雇主、HR、員工，還是想了解制度？
+            </p>
+            <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              {personaNav.map((item, i) => (
+                <Reveal key={item.href} delay={i * 0.08}>
+                  <Link
+                    href={item.href}
+                    className="flex h-full flex-col items-center gap-2 rounded-2xl border border-border bg-muted/40 p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-primary hover:shadow-lg"
+                  >
+                    <span className="text-3xl" aria-hidden="true">
+                      {item.emoji}
+                    </span>
+                    <span className="text-sm font-medium text-foreground">
+                      {item.title}
+                    </span>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
         </div>
+      </Section>
+
+      <Section className="py-4 lg:py-6">
+        <SearchBox />
       </Section>
 
       <Section>
@@ -141,38 +137,6 @@ export default function Home() {
           {quickEntries.map((entry, i) => (
             <Reveal key={entry.href} delay={i * 0.08}>
               <InfoCard {...entry} linkLabel="前往查看" className="h-full" />
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      <Section muted>
-        <SectionHeading eyebrow="我該怎麼做？" title="依你的身分快速導覽" />
-        <div className="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-4">
-          {personaNav.map((item, i) => (
-            <Reveal key={item.href} delay={i * 0.08}>
-              <Link
-                href={item.href}
-                className="flex h-full flex-col items-center gap-2 rounded-2xl border border-border bg-card p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-primary hover:shadow-lg"
-              >
-                <span className="text-3xl" aria-hidden="true">
-                  {item.emoji}
-                </span>
-                <span className="text-sm font-medium text-foreground">
-                  {item.title}
-                </span>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      <Section>
-        <SectionHeading eyebrow="網站特色" title="為什麼使用本手冊網站" />
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {siteFeatures.map((entry, i) => (
-            <Reveal key={entry.title} delay={i * 0.08}>
-              <InfoCard {...entry} className="h-full" />
             </Reveal>
           ))}
         </div>
@@ -244,6 +208,8 @@ export default function Home() {
           <FaqAccordion items={faqPreview} />
         </div>
       </Section>
+
+      <Hero />
     </>
   );
 }
