@@ -1,14 +1,5 @@
 import type { Metadata } from "next";
-import {
-  BookOpen,
-  MessagesSquare,
-  ScrollText,
-  ShieldAlert,
-  Target,
-  UserRoundX,
-  Users,
-  Wifi,
-} from "lucide-react";
+import { BookOpen, ScrollText, Target, Users } from "lucide-react";
 
 import { PageHeader } from "@/components/site/page-header";
 import { Section, SectionHeading } from "@/components/site/section";
@@ -17,6 +8,7 @@ import { Timeline, type TimelineStep } from "@/components/site/timeline";
 import { AlertBox } from "@/components/site/alert-box";
 import { Reveal } from "@/components/ui/reveal";
 import { buildMetadata } from "@/lib/seo";
+import { BASE_PATH } from "@/lib/base-path";
 
 export const metadata: Metadata = buildMetadata({
   title: "認識職場霸凌｜職場霸凌防治指導手冊",
@@ -28,29 +20,6 @@ const legalFlow: TimelineStep[] = [
   { step: "01", title: "職業安全衛生法", description: "課予雇主預防執行職務遭受不法侵害之義務。" },
   { step: "02", title: "防治準則", description: "訂定具體防治措施與處理程序之行政規範。" },
   { step: "03", title: "雇主責任", description: "落實於企業內部規章與申訴調查機制。" },
-];
-
-const bullyingTypes = [
-  {
-    icon: MessagesSquare,
-    title: "言語霸凌",
-    description: "辱罵、羞辱、嘲諷、威脅性言語等重複性言語攻擊。",
-  },
-  {
-    icon: UserRoundX,
-    title: "肢體霸凌",
-    description: "推擠、拍打、阻擋去路等涉及身體接觸的侵犯行為。",
-  },
-  {
-    icon: ShieldAlert,
-    title: "權勢霸凌",
-    description: "利用職位權力不當施壓、刁難或報復下屬。",
-  },
-  {
-    icon: Wifi,
-    title: "網路霸凌",
-    description: "透過通訊軟體、社群平台公開羞辱或散布不實訊息。",
-  },
 ];
 
 const definitionCards = [
@@ -137,13 +106,16 @@ export default function AboutPage() {
 
       <Section>
         <SectionHeading eyebrow="常見類型" title="職場霸凌的常見樣態" />
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {bullyingTypes.map((item, i) => (
-            <Reveal key={item.title} delay={i * 0.08}>
-              <InfoCard {...item} className="h-full" />
-            </Reveal>
-          ))}
-        </div>
+        <Reveal className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-border shadow-md">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`${BASE_PATH}/images/bullying-types.png`}
+            alt="職場霸凌四種常見樣態示意圖：言語霸凌（辱罵、羞辱、嘲諷、威脅性言語）、肢體霸凌（推擠、拍打、阻擋去路）、權勢霸凌（利用職位權力施壓、刁難或報復）、網路霸凌（透過通訊軟體或社群平台公開羞辱、散布不實訊息）"
+            width={1254}
+            height={1254}
+            className="h-auto w-full"
+          />
+        </Reveal>
       </Section>
 
       <Section muted>
