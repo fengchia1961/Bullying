@@ -3,9 +3,9 @@ import Link from "next/link";
 import {
   ArrowRight,
   ExternalLink,
-  FileQuestion,
   Landmark,
   ScrollText,
+  ShieldAlert,
   ShieldCheck,
 } from "lucide-react";
 
@@ -16,18 +16,18 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "官方資源｜職場霸凌防治指導手冊",
-  description: "勞動部、職安署、法規查詢與常見 QA 等職場霸凌防治相關資源連結。",
+  description: "勞動部、職安署、法規查詢與職場霸凌防治專區等官方資源連結。",
   path: "/resources",
 });
 
-const icons = [Landmark, ShieldCheck, ScrollText, FileQuestion];
+const icons = [Landmark, ShieldCheck, ScrollText, ShieldAlert];
 
 export default function ResourcesPage() {
   return (
     <>
       <PageHeader
         title="官方資源"
-        description="外部連結導向政府官方網站，常見 QA 則收錄於本站 FAQ 頁面。"
+        description="以下連結導向政府官方網站，提供最新、最完整的法規與政策資訊。"
         breadcrumb={[{ title: "官方資源" }]}
       />
 

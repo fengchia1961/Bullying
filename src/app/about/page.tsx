@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import {
   BookOpen,
   MessagesSquare,
+  ScrollText,
   ShieldAlert,
+  Target,
   UserRoundX,
+  Users,
   Wifi,
 } from "lucide-react";
 
@@ -50,6 +53,24 @@ const bullyingTypes = [
   },
 ];
 
+const definitionCards = [
+  {
+    icon: ScrollText,
+    title: "定義",
+    description: "一方對他人反覆施加言語、行為或權力上的不當對待，造成身心傷害或敵意工作環境。",
+  },
+  {
+    icon: Users,
+    title: "適用範圍",
+    description: "適用於同事、主管、部屬之間，也包含客戶、廠商等因執行職務而生的互動關係。",
+  },
+  {
+    icon: Target,
+    title: "目的",
+    description: "及早辨識、預防與處理，建立尊重、安全、友善的工作環境。",
+  },
+];
+
 const judgingSteps: TimelineStep[] = [
   { step: "01", title: "是否執行職務", description: "事件是否發生於執行職務或相關工作場合。" },
   { step: "02", title: "是否反覆發生", description: "行為是否具有持續性，而非單一偶發事件。" },
@@ -84,6 +105,14 @@ export default function AboutPage() {
             工作權益造成實質傷害。及早辨識這些特徵，有助於受害者尋求協助，也有助於雇主建立更完善的預防與處理
             機制，共同營造尊重、安全的工作環境。
           </p>
+        </div>
+
+        <div className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-6 sm:grid-cols-3">
+          {definitionCards.map((item, i) => (
+            <Reveal key={item.title} delay={i * 0.08}>
+              <InfoCard {...item} className="h-full" />
+            </Reveal>
+          ))}
         </div>
       </Section>
 

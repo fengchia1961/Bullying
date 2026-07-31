@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import {
   Download,
-  FileCheck2,
+  FileStack,
   FileSignature,
   FileText,
   NotebookPen,
@@ -15,7 +15,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "表單下載｜職場霸凌防治指導手冊",
-  description: "申訴書、委任書、撤回書、調查紀錄、保密切結書、同意書等表單下載。",
+  description: "申訴書、委任書、撤回書、保密切結、調查紀錄、其他附件等表單下載。",
   path: "/download",
 });
 
@@ -23,9 +23,9 @@ const forms = [
   { icon: FileText, title: "申訴書" },
   { icon: FileSignature, title: "委任書" },
   { icon: NotebookPen, title: "撤回書" },
+  { icon: ShieldCheck, title: "保密切結" },
   { icon: UserCheck, title: "調查紀錄" },
-  { icon: ShieldCheck, title: "保密切結書" },
-  { icon: FileCheck2, title: "同意書" },
+  { icon: FileStack, title: "其他附件" },
 ];
 
 export default function DownloadPage() {

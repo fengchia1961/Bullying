@@ -21,7 +21,7 @@ export function Hero() {
             職場霸凌防治指導手冊
           </h1>
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted-foreground">
-            建立尊重、安全、友善的工作環境。
+            協助您快速了解職場霸凌防治制度、申訴流程、調查程序及相關資源，建立安全、尊重的工作環境。
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link

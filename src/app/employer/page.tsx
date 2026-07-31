@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import {
+  Bell,
   Brain,
-  Gavel,
+  GraduationCap,
   HeartHandshake,
   Inbox,
   Landmark,
-  ScrollText,
+  RefreshCw,
   ShieldCheck,
+  Siren,
   Stethoscope,
 } from "lucide-react";
 
@@ -27,23 +29,23 @@ export const metadata: Metadata = buildMetadata({
 const responsibilities = [
   {
     icon: ShieldCheck,
-    title: "預防",
-    description: "訂定書面防治措施與申訴管道，並公告周知全體員工。",
+    title: "建立制度",
+    description: "訂定書面防治措施、申訴管道與處理程序，並公告周知全體員工。",
   },
   {
-    icon: Inbox,
+    icon: GraduationCap,
+    title: "預防教育",
+    description: "定期辦理教育訓練，提升管理者與員工的防治意識。",
+  },
+  {
+    icon: Siren,
     title: "立即措施",
     description: "接獲申訴後即時處置，避免情況持續惡化。",
   },
   {
-    icon: Gavel,
-    title: "調查",
-    description: "組成公正調查小組，於合理期限內完成調查並做成報告。",
-  },
-  {
     icon: HeartHandshake,
-    title: "保護",
-    description: "保護當事人身心安全，避免遭受二次傷害或報復。",
+    title: "保護協助",
+    description: "保護當事人身心安全，提供必要協助避免二次傷害。",
   },
 ];
 
@@ -62,14 +64,14 @@ const steps: TimelineStep[] = [
   },
   {
     step: "STEP 03",
-    title: "協助",
-    icon: HeartHandshake,
-    description: "提供心理、法律等必要協助，支持當事人身心健康。",
+    title: "通知相關單位",
+    icon: Bell,
+    description: "依規定通知人資、主管或勞動主管機關等相關單位。",
   },
   {
     step: "STEP 04",
     title: "開始調查",
-    icon: Gavel,
+    icon: RefreshCw,
     description: "組成調查小組，依既定程序展開正式調查。",
   },
 ];
@@ -77,23 +79,23 @@ const steps: TimelineStep[] = [
 const assistance = [
   {
     icon: Brain,
-    title: "心理協助",
+    title: "心理支持",
     description: "提供諮商輔導資源，協助當事人調適身心壓力。",
   },
   {
-    icon: Landmark,
-    title: "法律協助",
-    description: "提供法律諮詢管道，說明申訴與後續救濟權益。",
-  },
-  {
     icon: Stethoscope,
-    title: "醫療協助",
+    title: "醫療",
     description: "如有身心傷害，協助安排就醫與相關醫療資源。",
   },
   {
-    icon: ScrollText,
-    title: "福利資源",
-    description: "視需要提供職務調整、彈性工時等福利支持。",
+    icon: Landmark,
+    title: "法律",
+    description: "提供法律諮詢管道，說明申訴與後續救濟權益。",
+  },
+  {
+    icon: RefreshCw,
+    title: "調整工作",
+    description: "視需要調整職務內容、工作空間或彈性工時。",
   },
 ];
 
@@ -120,7 +122,7 @@ export default function EmployerPage() {
       <Section muted>
         <SectionHeading
           eyebrow="處理流程"
-          title="知悉後的立即措施"
+          title="收到申訴後怎麼做"
           description="每一步都應留下書面紀錄，作為後續調查與法規遵循的依據。"
         />
         <div className="mt-12">
@@ -129,7 +131,7 @@ export default function EmployerPage() {
       </Section>
 
       <Section>
-        <SectionHeading eyebrow="協助資源" title="可提供哪些協助" />
+        <SectionHeading eyebrow="協助資源" title="可以提供哪些協助" />
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {assistance.map((item, i) => (
             <Reveal key={item.title} delay={i * 0.08}>
@@ -142,8 +144,8 @@ export default function EmployerPage() {
       <Section muted className="max-w-3xl">
         <AlertBox
           variant="danger"
-          title="雇主對申訴人不得有下列行為："
-          items={["報復", "歧視", "不利待遇"]}
+          title="禁止事項：雇主對申訴人不得有下列行為"
+          items={["不得報復", "不得歧視", "不得洩漏"]}
         />
       </Section>
     </>

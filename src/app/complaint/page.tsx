@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  CalendarClock,
   CheckCircle2,
   ClipboardEdit,
   Download,
+  FileSearch,
   Gavel,
   Megaphone,
+  Send,
 } from "lucide-react";
 
 import { PageHeader } from "@/components/site/page-header";
@@ -23,44 +24,50 @@ export const metadata: Metadata = buildMetadata({
 
 const steps: TimelineStep[] = [
   { step: "STEP 1", title: "提出申訴", icon: ClipboardEdit, description: "員工向雇主或指定窗口提出申訴。" },
-  { step: "STEP 2", title: "是否受理", icon: CheckCircle2, description: "雇主於期限內審核並決定是否受理。" },
-  { step: "STEP 3", title: "調查", icon: Gavel, description: "組成調查小組進行訪談與蒐證。" },
-  { step: "STEP 4", title: "決定", icon: CalendarClock, description: "彙整調查結果，做成處理建議。" },
+  { step: "STEP 2", title: "受理", icon: CheckCircle2, description: "雇主於期限內審核並決定是否受理。" },
+  { step: "STEP 3", title: "成立調查", icon: Gavel, description: "受理後組成調查小組，正式立案。" },
+  { step: "STEP 4", title: "調查", icon: FileSearch, description: "進行訪談與蒐證，釐清事實。" },
   { step: "STEP 5", title: "通知", icon: Megaphone, description: "以書面通知雙方最終處理結果。" },
+  { step: "STEP 6", title: "申復", icon: Send, description: "如有不服，可於期限內提出申復。" },
 ];
 
 const stepDetails = [
   {
     step: "STEP 1",
     title: "提出申訴",
-    items: ["可書面", "可口頭", "可 Email"],
+    items: ["書面", "口頭", "Email", "代理人"],
   },
   {
     step: "STEP 2",
-    title: "是否受理",
-    items: ["10 個工作日內審核", "書面通知是否受理", "不受理需說明理由"],
+    title: "受理",
+    items: ["審核申訴內容", "書面通知是否受理", "不受理需說明理由"],
   },
   {
     step: "STEP 3",
-    title: "調查",
-    items: ["組成調查小組", "分別訪談雙方與證人", "蒐集相關事證"],
+    title: "成立調查",
+    items: ["組成調查小組", "指定利益迴避", "正式立案登記"],
   },
   {
     step: "STEP 4",
-    title: "決定",
-    items: ["彙整調查報告", "做成處理建議", "簽核確認"],
+    title: "調查",
+    items: ["分別訪談雙方與證人", "蒐集相關事證", "製作訪談紀錄"],
   },
   {
     step: "STEP 5",
     title: "通知",
     items: ["書面通知雙方結果", "說明處理理由", "告知申復權利"],
   },
+  {
+    step: "STEP 6",
+    title: "申復",
+    items: ["期限內以書面提出", "說明不服理由", "交由申復審議小組審查"],
+  },
 ];
 
 const schedule = [
-  { label: "10 工作日", description: "決定是否受理申訴案件" },
-  { label: "7 工作日", description: "完成受理登錄與組成調查小組" },
-  { label: "調查期限", description: "依案件複雜度合理延長，並通知雙方" },
+  { label: "提出期限", description: "知悉事件後應儘速提出，越早保留證據越有利" },
+  { label: "受理期限", description: "雇主原則上應於 10 個工作日內決定是否受理" },
+  { label: "通知期限", description: "調查完成後應於合理期限內以書面通知雙方" },
 ];
 
 export default function ComplaintPage() {
@@ -75,7 +82,7 @@ export default function ComplaintPage() {
       <Section muted>
         <SectionHeading
           eyebrow="流程圖"
-          title="申訴流程五步驟"
+          title="申訴流程六步驟"
           description="每一步皆有明確時程與負責窗口，確保申訴案件不被拖延。"
         />
         <div className="mt-12">
@@ -115,7 +122,7 @@ export default function ComplaintPage() {
           </div>
 
           <div>
-            <SectionHeading center={false} eyebrow="時程" title="重要期限" />
+            <SectionHeading center={false} eyebrow="Important" title="重要期限" />
             <div className="mt-8 space-y-4">
               {schedule.map((item, i) => (
                 <Reveal key={item.label} delay={i * 0.08}>

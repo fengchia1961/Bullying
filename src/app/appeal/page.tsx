@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  ArrowRight,
   Bell,
   CheckCircle2,
   FileSearch,
@@ -50,16 +51,22 @@ const steps: TimelineStep[] = [
   },
   {
     step: "STEP 05",
-    title: "完成決定",
+    title: "完成決議",
     icon: CheckCircle2,
-    description: "做成最終決定並書面通知雙方，程序至此終結。",
+    description: "做成最終決議並書面通知雙方，程序至此終結。",
   },
 ];
 
 const eligibleReasons = [
   { icon: FileWarning, title: "程序瑕疵", description: "原調查程序有違反公正、保密等規定之情形。" },
-  { icon: ScrollText, title: "新事證", description: "原調查時未能取得，且足以影響認定結果的新證據。" },
   { icon: Gavel, title: "重大遺漏", description: "原調查對重要事實或關鍵證人有明顯疏漏未予審酌。" },
+  { icon: ScrollText, title: "新事證", description: "原調查時未能取得，且足以影響認定結果的新證據。" },
+];
+
+const reinvestigateFlow = [
+  { title: "申復成立", description: "審議小組認定申復理由成立" },
+  { title: "再調查", description: "就爭議部分重新蒐證、訪談" },
+  { title: "重新決議", description: "做成新的處理決議並通知雙方" },
 ];
 
 export default function AppealPage() {
@@ -88,6 +95,34 @@ export default function AppealPage() {
           {eligibleReasons.map((item, i) => (
             <Reveal key={item.title} delay={i * 0.08}>
               <InfoCard {...item} className="h-full" />
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeading eyebrow="Flow" title="申復成立後如何重新調查" />
+        <div className="mx-auto mt-12 flex max-w-3xl flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          {reinvestigateFlow.map((item, i) => (
+            <Reveal
+              key={item.title}
+              delay={i * 0.1}
+              className="flex flex-col items-center gap-4 sm:flex-row"
+            >
+              <div className="rounded-2xl border border-border bg-card px-6 py-5 text-center shadow-sm">
+                <p className="font-heading text-sm font-semibold text-foreground">
+                  {item.title}
+                </p>
+                <p className="mt-1 max-w-[10rem] text-xs text-muted-foreground">
+                  {item.description}
+                </p>
+              </div>
+              {i < reinvestigateFlow.length - 1 && (
+                <ArrowRight
+                  className="h-5 w-5 rotate-90 text-brand-primary sm:rotate-0"
+                  aria-hidden="true"
+                />
+              )}
             </Reveal>
           ))}
         </div>

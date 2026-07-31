@@ -40,5 +40,9 @@ export const officialResources: ResourceItem[] = [
   { title: "勞動部", href: "https://www.mol.gov.tw/", external: true },
   { title: "職安署", href: "https://www.osha.gov.tw/", external: true },
   { title: "法規查詢", href: "https://law.moj.gov.tw/", external: true },
-  { title: "常見QA", href: "/faq", external: false },
+  {
+    title: "職場霸凌防治專區",
+    href: "https://www.osha.gov.tw/48110/48132/48133/",
+    external: true,
+  },
 ];
