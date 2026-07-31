@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { BackToTop } from "@/components/layout/back-to-top";
+import { buildMetadata } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,9 +26,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "職場霸凌防治指導手冊",
-  description:
-    "快速了解職場霸凌防治制度、申訴流程、調查程序與相關資源，建立安全、尊重的工作環境。",
+  metadataBase: new URL("https://fengchia1961.github.io/Bullying"),
+  ...buildMetadata({
+    title: "職場霸凌防治指導手冊｜Workplace Bullying Prevention Guide",
+    description:
+      "快速了解職場霸凌防治制度、申訴流程、調查程序及相關資源，建立安全、尊重的工作環境。",
+    path: "/",
+  }),
 };
 
 export default function RootLayout({

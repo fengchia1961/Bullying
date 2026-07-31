@@ -3,6 +3,10 @@ export type NavItem = {
   href: string;
 };
 
+export type ResourceItem = NavItem & {
+  external?: boolean;
+};
+
 export const siteConfig = {
   name: "職場霸凌防治指導手冊",
   shortName: "職場霸凌防治手冊",
@@ -14,9 +18,9 @@ export const siteConfig = {
 
 export const mainNav: NavItem[] = [
   { title: "首頁", href: "/" },
-  { title: "認識職場霸凌", href: "/understanding" },
-  { title: "雇主責任", href: "/employer-responsibility" },
-  { title: "申訴流程", href: "/complaint-process" },
+  { title: "認識職場霸凌", href: "/about" },
+  { title: "雇主責任", href: "/employer" },
+  { title: "申訴流程", href: "/complaint" },
   { title: "調查程序", href: "/investigation" },
   { title: "申復流程", href: "/appeal" },
   { title: "FAQ", href: "/faq" },
@@ -24,20 +28,17 @@ export const mainNav: NavItem[] = [
 ];
 
 export const footerQuickLinks: NavItem[] = [
-  { title: "認識職場霸凌", href: "/understanding" },
-  { title: "雇主責任", href: "/employer-responsibility" },
-  { title: "申訴流程", href: "/complaint-process" },
+  { title: "認識職場霸凌", href: "/about" },
+  { title: "雇主責任", href: "/employer" },
+  { title: "申訴流程", href: "/complaint" },
   { title: "調查程序", href: "/investigation" },
   { title: "申復流程", href: "/appeal" },
-  { title: "表單下載", href: "/forms" },
+  { title: "表單下載", href: "/download" },
 ];
 
-export const officialResources: NavItem[] = [
-  { title: "勞動部", href: "https://www.mol.gov.tw/" },
-  { title: "職業安全衛生署", href: "https://www.osha.gov.tw/" },
-  {
-    title: "職場霸凌防治專區",
-    href: "https://www.osha.gov.tw/48110/48132/48133/",
-  },
-  { title: "全國法規資料庫", href: "https://law.moj.gov.tw/" },
+export const officialResources: ResourceItem[] = [
+  { title: "勞動部", href: "https://www.mol.gov.tw/", external: true },
+  { title: "職安署", href: "https://www.osha.gov.tw/", external: true },
+  { title: "法規查詢", href: "https://law.moj.gov.tw/", external: true },
+  { title: "常見QA", href: "/faq", external: false },
 ];

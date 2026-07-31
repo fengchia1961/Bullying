@@ -9,19 +9,19 @@ export const searchIndex: SearchEntry[] = [
   {
     title: "什麼是職場霸凌",
     description: "認識職場霸凌的定義與常見類型",
-    href: "/understanding",
+    href: "/about",
     keywords: ["定義", "類型", "判斷原則", "霸凌"],
   },
   {
     title: "雇主責任",
     description: "雇主接獲申訴後的處理義務與保護措施",
-    href: "/employer-responsibility",
+    href: "/employer",
     keywords: ["雇主", "保護當事人", "防治措施"],
   },
   {
     title: "申訴流程",
     description: "如何提出申訴、受理期限與流程圖",
-    href: "/complaint-process",
+    href: "/complaint",
     keywords: ["申訴", "受理期限", "提出申訴", "10日"],
   },
   {
@@ -45,7 +45,7 @@ export const searchIndex: SearchEntry[] = [
   {
     title: "表單下載",
     description: "申訴書、委任書、撤回書等表單",
-    href: "/forms",
+    href: "/download",
     keywords: ["表單", "申訴書", "委任書", "撤回書"],
   },
   {
