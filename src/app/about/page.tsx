@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BookOpen, ScrollText, Target, Users } from "lucide-react";
+import { BookOpen, Headphones, ScrollText, Target, Users } from "lucide-react";
 
 import { PageHeader } from "@/components/site/page-header";
 import { Section, SectionHeading } from "@/components/site/section";
@@ -45,6 +45,13 @@ const judgingSteps: TimelineStep[] = [
   { step: "02", title: "是否反覆發生", description: "行為是否具有持續性，而非單一偶發事件。" },
   { step: "03", title: "是否造成身心傷害", description: "是否已對當事人身心健康造成實質影響。" },
   { step: "04", title: "是否具有權勢關係", description: "雙方是否存在職權、資歷等不對等關係。" },
+];
+
+const podcastHighlights = [
+  "2026年7月新版職安法：五大要件（工作相關、權力不對等、逾越合理範圍、持續發生、身心受害）",
+  "真實案例：法院判老闆需賠償近11萬元精神慰撫金",
+  "合法蒐證：多人辦公室錄音合法，私密空間偷錄恐涉妨害秘密罪",
+  "若最高負責人本人就是霸凌者，可直接重罰最高100萬元",
 ];
 
 export default function AboutPage() {
@@ -130,6 +137,50 @@ export default function AboutPage() {
           variant="warning"
           title="並非所有衝突都是職場霸凌，需依個案判斷。"
         />
+      </Section>
+
+      <Section muted>
+        <SectionHeading
+          eyebrow="延伸收聽"
+          title="3 分鐘搞懂：老闆天天罵人算霸凌嗎？"
+          description="用聲音快速複習判斷要件、真實判決案例，以及合法蒐證的注意事項。"
+        />
+        <div className="mx-auto mt-10 max-w-2xl">
+          <Reveal className="overflow-hidden rounded-2xl border border-border bg-card shadow-md">
+            <video
+              src={`${BASE_PATH}/videos/podcast-bullying-basics.mp4`}
+              controls
+              preload="metadata"
+              className="h-auto w-full bg-black"
+            >
+              您的瀏覽器不支援影片播放，請
+              <a
+                href={`${BASE_PATH}/videos/podcast-bullying-basics.mp4`}
+                className="text-brand-primary underline"
+              >
+                點此下載
+              </a>
+              。
+            </video>
+          </Reveal>
+
+          <div className="mt-6 flex items-start gap-3 rounded-2xl border border-border bg-card p-5 shadow-sm">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-primary/10 text-brand-primary">
+              <Headphones className="h-4 w-4" aria-hidden="true" />
+            </span>
+            <ul className="space-y-1.5">
+              {podcastHighlights.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground"
+                >
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-accent" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </Section>
     </>
   );
